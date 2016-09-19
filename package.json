@@ -15,6 +15,9 @@
     "build": "./script/build",
     "start": "./script/server",
     "test": "./script/test",
+    "buildWin": "PowerShell -NoProfile -NonInteractive -File ./script/build-win.ps1",
+    "startWin": "PowerShell -NoProfile -NonInteractive -File ./script/server-win.ps1",
+    "testWin": "PowerShell -NoProfile -NonInteractive -File ./script/test-win.ps1",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect"
   },
