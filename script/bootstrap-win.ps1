@@ -11,5 +11,4 @@ if( !(Test-Path package.json) ) {
 npm install
 npm install -g phantomjs-prebuilt
 bower install
-bundle install
 cp server/config-example.js server/config.js
