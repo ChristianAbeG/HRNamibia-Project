@@ -6,7 +6,7 @@ export default Ember.Service.extend({
   fileSystemSize: (1024 * 1024 * 1024 * 8), // 8GB max size for local filesystem;chrome only,
 
   _onError: function(e) {
-    console.log('Filer filesystem error: ' + e);
+    console.log(`Filer filesystem error: ${e}`);
   },
 
   _downloadFiles: function() {
@@ -22,10 +22,10 @@ export default Ember.Service.extend({
    * @param {Object} fileRecord Record to use to download the file.
    */
   _downloadFileFromServer: function(fileRecord) {
-    let fileName = Ember.get(fileRecord, 'fileName'),
-      pouchDbId = Ember.get(fileRecord, 'id'),
-      url = Ember.get(fileRecord, 'url'),
-      xhr = new XMLHttpRequest();
+    let fileName = Ember.get(fileRecord, 'fileName');
+    let pouchDbId = Ember.get(fileRecord, 'id');
+    let url = Ember.get(fileRecord, 'url');
+    let xhr = new XMLHttpRequest();
     if (!Ember.isEmpty(url)) {
       xhr.open('GET', url, true);
       xhr.responseType = 'blob';
@@ -38,8 +38,8 @@ export default Ember.Service.extend({
   },
 
   setup: function() {
-    let size = this.get('fileSystemSize'),
-      filer = new Filer();
+    let size = this.get('fileSystemSize');
+    let filer = new Filer();
     filer.init({ persistent: true, size: size }, function() {
       try {
         this.set('filer', filer);
@@ -60,11 +60,11 @@ export default Ember.Service.extend({
    */
   addFile: function(file, path, pouchDbId) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      let currentDate = new Date(),
-        filer = this.get('filer'),
-        fileName = file.name || currentDate.getTime(),
-        newFileName = path + fileName,
-        config = this.get('config');
+      let currentDate = new Date();
+      let filer = this.get('filer');
+      let fileName = file.name || currentDate.getTime();
+      let newFileName = path + fileName;
+      let config = this.get('config');
       if (path.indexOf('.') > -1) {
         newFileName = path;
         // If a full file path was provided, figure out the path and file name.
@@ -77,7 +77,7 @@ export default Ember.Service.extend({
       if (newFileName.indexOf('.') === -1) {
         if (file.type) {
           let typeParts = file.type.split('/');
-          newFileName += '.' + typeParts.pop();
+          newFileName += `.${typeParts.pop()}`;
         } else {
           // Default to png extension
           newFileName += '.png';
@@ -95,7 +95,7 @@ export default Ember.Service.extend({
         if (Ember.isEmpty(fileName) && !Ember.isEmpty(file.type)) {
           let typeParts = file.type.split('/');
           if (typeParts.length > 1) {
-            newFileName += '.' + typeParts[1];
+            newFileName += `.${typeParts[1]}`;
           }
         }
         filer.mkdir(path, false, function() {
@@ -122,8 +122,8 @@ export default Ember.Service.extend({
    */
   deleteFile: function(filePath, pouchDbId) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      let filer = this.get('filer'),
-        config = this.get('config');
+      let filer = this.get('filer');
+      let config = this.get('config');
       try {
         filer.rm(filePath, function() {
           config.removeFileLink(pouchDbId);
