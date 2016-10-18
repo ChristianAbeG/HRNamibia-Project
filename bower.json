@@ -1,5 +1,5 @@
 {
-  "name": "hospitalrun",
+  "name": "hrnamibia",
   "dependencies": {
     "JsBarcode": "https://github.com/HospitalRun/JsBarcode.git",
     "bootstrap": "~3.3.5",
