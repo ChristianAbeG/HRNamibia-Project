@@ -311,6 +311,11 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
       afterUpdateAction = 'editNewItem';
       this.set('savingNewItem', false);
     }
-    this.displayAlert('Inventory Item Saved', 'The inventory item has been saved.', afterUpdateAction);
+    var alertAction = this.displayAlert('Inventory Item Saved', 'The inventory item has been saved muddah.', afterUpdateAction);
+    console.log(alertAction.buttonReturned);
+    if (alertAction.buttonReturned === 'OK') {
+      this.transitionToRoute('inventory.edit');
+      this.alert('entered if!');
+    }
   }
 });
