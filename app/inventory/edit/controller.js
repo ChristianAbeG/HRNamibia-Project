@@ -316,6 +316,7 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     if (alertAction.buttonReturned === 'OK') {
       this.transitionToRoute('inventory.edit');
       this.alert('entered if!');
+      // a comment by Trevor
     }
   }
 });
