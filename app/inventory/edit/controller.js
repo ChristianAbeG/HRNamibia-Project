@@ -310,6 +310,7 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     if (this.get('savingNewItem')) {
       afterUpdateAction = 'editNewItem';
       this.set('savingNewItem', false);
+      //hello this is the doctor
     }
     var alertAction = this.displayAlert('Inventory Item Saved', 'The inventory item has been saved muddah.', afterUpdateAction);
     console.log(alertAction.buttonReturned);
