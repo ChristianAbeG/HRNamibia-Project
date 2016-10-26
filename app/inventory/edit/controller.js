@@ -313,11 +313,13 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
       //hello this is the doctor
     }
     var alertAction = this.displayAlert('Inventory Item Saved', 'The inventory item has been saved muddah.', afterUpdateAction);
-    console.log(alertAction.buttonReturned);
+    
+    this.transitionToRoute('inventory.edit');
+    /*console.log(alertAction.buttonReturned);
     if (alertAction.buttonReturned === 'OK') {
       this.transitionToRoute('inventory.edit');
       this.alert('entered if!');
       // a comment by Trevor
-    }
+    }*/
   }
 });
