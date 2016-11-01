@@ -312,14 +312,8 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
       this.set('savingNewItem', false);
     }
     this.displayAlert('Inventory Item Saved', 'The inventory item has been saved.', afterUpdateAction);
-    // This *should redirect* ...
-    this.transitionToRoute('inventory.edit');
     
-    /*var alertAction = this.displayAlert('Inventory Item Saved', 'The inventory item has been saved.', afterUpdateAction);
-    console.log(alertAction.buttonReturned);
-    if (alertAction.buttonReturned === 'OK') {
-      this.transitionToRoute('inventory.edit');
-      this.alert('entered if!');
-    }*/
+    // TR: This *should* redirect immediately, but it doesn't
+    this.transitionToRoute('inventory.edit');
   }
 });
