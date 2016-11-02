@@ -313,7 +313,7 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     }
     this.displayAlert('Inventory Item Saved', 'The inventory item has been saved.', afterUpdateAction);
     
-    // TR: This *should* redirect immediately, but it doesn't
-    this.transitionToRoute('inventory.edit');
+    // TR: This works!
+    this.transitionToRoute('inventory.listing');
   }
 });
