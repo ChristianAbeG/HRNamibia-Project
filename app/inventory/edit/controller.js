@@ -61,8 +61,8 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
    * @return {boolean} true if there is a discrepency;otherwise false.
    */
   quantityDiscrepency: function() {
-    let locationQuantityTotal = this.get('locationQuantityTotal'),
-      quantity = this.get('model.quantity');
+    let locationQuantityTotal = this.get('locationQuantityTotal');
+    let quantity = this.get('model.quantity');
     return (!Ember.isEmpty(locationQuantityTotal) && !Ember.isEmpty(quantity) && locationQuantityTotal !== quantity);
   }.property('locationQuantityTotal', 'model.quantity'),
 
@@ -71,14 +71,14 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
    * @return {int} the difference.
    */
   quantityDifferential: function() {
-    let locationQuantityTotal = this.get('locationQuantityTotal'),
-      quantity = this.get('model.quantity');
+    let locationQuantityTotal = this.get('locationQuantityTotal');
+    let quantity = this.get('model.quantity');
     return Math.abs(locationQuantityTotal - quantity);
   }.property('locationQuantityTotal', 'model.quantity'),
 
   originalQuantityUpdated: function() {
-    let isNew = this.get('model.isNew'),
-      quantity = this.get('model.originalQuantity');
+    let isNew = this.get('model.isNew');
+    let quantity = this.get('model.originalQuantity');
     if (isNew && !Ember.isEmpty(quantity)) {
       this.set('model.quantity', quantity);
     }
@@ -95,10 +95,10 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
 
   actions: {
     adjustItems: function(inventoryLocation) {
-      let adjustmentQuantity = parseInt(inventoryLocation.get('adjustmentQuantity')),
-        inventoryItem = this.get('model'),
-        transactionType = inventoryLocation.get('transactionType'),
-        request = this.get('store').createRecord('inv-request', {
+      let adjustmentQuantity = parseInt(inventoryLocation.get('adjustmentQuantity'));
+      let inventoryItem = this.get('model');
+      let transactionType = inventoryLocation.get('transactionType');
+      let request = this.get('store').createRecord('inv-request', {
           adjustPurchases: true,
           dateCompleted: inventoryLocation.get('dateCompleted'),
           expenseAccount: inventoryLocation.get('expenseAccount'),
@@ -145,8 +145,8 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     },
 
     transferItems: function(inventoryLocation) {
-      let inventoryItem = this.get('model'),
-        request = this.get('store').createRecord('inv-request', {
+      let inventoryItem = this.get('model');
+      let request = this.get('store').createRecord('inv-request', {
           adjustPurchases: false,
           dateCompleted: inventoryLocation.get('dateCompleted'),
           inventoryItem: inventoryItem,
@@ -183,14 +183,14 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
   },
 
   _completeBeforeUpdate: function(sequence, resolve, reject) {
-    let sequenceValue = null,
-      friendlyId = sequence.get('prefix'),
-      promises = [],
-      model = this.get('model'),
-      newPurchase = model.getProperties('aisleLocation', 'dateReceived',
+    let sequenceValue = null;
+    let friendlyId = sequence.get('prefix');
+    let promises = [];
+    let model = this.get('model');
+    let newPurchase = model.getProperties('aisleLocation', 'dateReceived',
         'purchaseCost', 'lotNumber', 'expirationDate', 'giftInKind',
-        'invoiceNo', 'location', 'originalQuantity', 'quantityGroups', 'vendor', 'vendorItemNo'),
-      quantity = this.get('model.originalQuantity');
+        'invoiceNo', 'location', 'originalQuantity', 'quantityGroups', 'vendor', 'vendorItemNo');
+    let quantity = this.get('model.originalQuantity');
     if (!Ember.isEmpty(quantity)) {
       newPurchase.currentQuantity = quantity;
       newPurchase.inventoryItem = this.get('model.id');
@@ -202,7 +202,7 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     sequence.incrementProperty('value', 1);
     sequenceValue = sequence.get('value');
     if (sequenceValue < 100000) {
-      friendlyId += String('00000' + sequenceValue).slice(-5);
+      friendlyId += String(`00000${sequenceValue}`).slice(-5);
     } else {
       friendlyId += sequenceValue;
     }
@@ -222,7 +222,7 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     sequenceFinder.then(function(prefixChars) {
       let store = this.get('store');
       let newSequence = store.push(store.normalize('sequence', {
-        id: 'inventory_' + inventoryType,
+        id: `inventory_${inventoryType}`,
         prefix: inventoryType.toLowerCase().substr(0, prefixChars),
         value: 0
       }));
@@ -281,13 +281,13 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
 
   beforeUpdate: function() {
     if (this.get('model.isNew')) {
-      let model = this.get('model'),
-        inventoryType = model.get('inventoryType');
+      let model = this.get('model');
+      let inventoryType = model.get('inventoryType');
       return new Ember.RSVP.Promise(function(resolve, reject) {
         model.validate().then(function() {
           if (model.get('isValid')) {
             this.set('savingNewItem', true);
-            this.store.find('sequence', 'inventory_' + inventoryType).then(function(sequence) {
+            this.store.find('sequence', `inventory_${inventoryType}`).then(function(sequence) {
               this._completeBeforeUpdate(sequence, resolve, reject);
             }.bind(this), function() {
               this._findSequence(inventoryType, resolve, reject);
