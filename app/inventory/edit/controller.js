@@ -123,6 +123,8 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
 
     editNewItem: function() {
       this.send('editItem', this.get('model.id'));
+      // TR: Redirect to item listing after new item is created
+      this.transitionToRoute('inventory.listing');
     },
 
     showAdjustment: function(inventoryLocation) {
@@ -312,8 +314,5 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
       this.set('savingNewItem', false);
     }
     this.displayAlert('Inventory Item Saved', 'The inventory item has been saved.', afterUpdateAction);
-    
-    // TR: This works!
-    this.transitionToRoute('inventory.listing');
   }
 });
