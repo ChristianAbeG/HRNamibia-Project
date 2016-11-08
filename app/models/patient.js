@@ -1,4 +1,4 @@
-import AbstractModel from 'hospitalrun/models/abstract';
+import AbstractModel from 'hospitalrun/models/abstract-tracking'; //Extend abstract-tracking to enable revision history
 import DOBDays from 'hospitalrun/mixins/dob-days';
 import EmailValidation from 'hospitalrun/utils/email-validation';
 import Ember from 'ember';

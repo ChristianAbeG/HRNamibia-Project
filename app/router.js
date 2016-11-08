@@ -117,6 +117,12 @@ Router.map(function() {
       this.route('edit', { path: '/edit/:procedure_id' });
     });
   });
+  
+  this.route('revisions', {
+    resetNamespace: true,
+  }, function() {
+    this.route('reason');
+  });
 });
 
 export default Router;
