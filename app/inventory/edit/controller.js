@@ -126,6 +126,11 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
       // TR: Redirect to item listing after new item is created
       this.transitionToRoute('inventory.listing');
     },
+    
+    updateItem: function() {
+      // TR: Redirect to item listing after item is updated
+      this.transitionToRoute('inventory.listing');
+    },
 
     showAdjustment: function(inventoryLocation) {
       inventoryLocation.setProperties({
@@ -312,6 +317,8 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     if (this.get('savingNewItem')) {
       afterUpdateAction = 'editNewItem';
       this.set('savingNewItem', false);
+    } else {
+      afterUpdateAction = 'updateItem';
     }
     this.displayAlert('Inventory Item Saved', 'The inventory item has been saved.', afterUpdateAction);
   }

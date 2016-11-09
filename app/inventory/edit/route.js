@@ -19,6 +19,10 @@ export default AbstractEditRoute.extend(InventoryId, {
     editNewItem: function() {
       this.controller.send('editNewItem');
     },
+    
+    updateItem: function() {
+      this.controller.send('updateItem');
+    },
 
     transferItems: function(inventoryLocation) {
       this.controller.send('transferItems', inventoryLocation);
