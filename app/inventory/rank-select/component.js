@@ -14,6 +14,6 @@ export default Ember.Component.extend({
     this._super(...arguments);
 
     // set available options
-    this.set('rankOptions', Ember.A(['A', 'B', 'C']));
+    this.set('rankOptions', Ember.A(['Vital', 'Essential', 'Necessary']));
   }
 });
