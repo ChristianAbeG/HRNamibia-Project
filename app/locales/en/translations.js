@@ -791,7 +791,8 @@ export default {
       medication: 'Medication',
       imaging: 'Imaging',
       labs: 'Labs',
-      socialWork: 'Social Work'
+      socialWork: 'Social Work',
+      revisions: 'Revisions'
     },
     titles: {
       admittedPatients: 'Admitted Patients',
@@ -999,5 +1000,12 @@ export default {
     priceList: {
       charges: '{{pricingType}} charges'
     }
+  },
+  revisions: {
+    revisedBy: 'Revised By',
+    fieldsRevised: 'Fields Revised (old&rarr;new)',
+    revisedTo: 'Revised to: ',
+    fieldName: 'Field Revised',
+    changesMade: 'Changes Made (old&rarr;new)'
   }
 };
