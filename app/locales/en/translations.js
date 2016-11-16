@@ -520,7 +520,7 @@ export default {
       quantityAvailable: 'Quantity Available',
       quantityOnHand: 'Quantity on Hand',
       quantityRequested: 'Quantity Requested',
-      rank: 'Rank',
+      rank: 'VEN Rank',
       reason: 'Reason',
       remove: 'Remove',
       reorderPoint: 'Reorder Point',
@@ -541,7 +541,8 @@ export default {
       unitCost: 'Unit Cost',
       vendor: 'Vendor',
       vendorItemNumber: 'Vendor Item Number',
-      xref: 'XRef'
+      xref: 'XRef',
+      nemClass: 'NEM Class'
     },
     messages: {
       adjust: 'Please adjust the quantities on the appropriate location(s) to account for the difference of {{difference}}.',

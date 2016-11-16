@@ -31,7 +31,7 @@ export default AbstractModel.extend(LocationName, {
   reorderPoint: DS.attr('number'),
   distributionUnit: DS.attr('string'),
   rank: DS.attr('string'),
-  //nemClass: DS.attr('string'),
+  nemClass: DS.attr('string'),
 
   // TODO: this value should be server calcuated property on model!
   estimatedDaysOfStock: 14,
