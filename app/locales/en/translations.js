@@ -361,7 +361,8 @@ export default {
     category: 'Category',
     department: 'Department',
     address: 'Address',
-    country: 'Country'
+    country: 'Country',
+    reason: 'Reason'
   },
   messages: {
     noItemsFound: 'No items found.',
