@@ -12,6 +12,15 @@ let validateIfNewItem = {
     return (!skipSavePurchase && object.get('isNew'));
   }
 };
+function isMedicine() {
+  if (this.inventoryType == 'Medication')
+  {
+    return true;
+  }
+  else{ 
+    return false;
+  }
+}
 
 export default AbstractModel.extend(LocationName, {
   purchases: DS.hasMany('inv-purchase', {
@@ -109,4 +118,5 @@ export default AbstractModel.extend(LocationName, {
     }, 0);
     this.set('quantity', newQuantity);
   }
+  
 });

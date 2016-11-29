@@ -6,8 +6,11 @@
     </div>
   {{/unless}}
   {{em-input property="name" label=(t 'labels.name') class="required  col-sm-6 test-inv-name"}}
-  {{inventory/rank-select property="rank"}}
-  {{inventory/class-select property="nemClass"}}
+  {{em-select label=(t 'labels.type') property="inventoryType"
+    content=inventoryTypes
+      class="required col-sm-3 test-inv-type"
+      prompt=" "
+  }}
   {{#unless model.isNew}}
     <div class="form-group col-sm-2">
       <label>{{t 'labels.quantity'}}</label>
@@ -18,12 +21,11 @@
 
 {{em-text label=(t 'labels.description') property="description" rows=1 }}
 <div class="row">
-  {{em-select label=(t 'labels.type') property="inventoryType"
-    content=inventoryTypes
-      class="required col-sm-4 test-inv-type"
-      prompt=" "
-  }}
   {{em-input property="crossReference" label=(t 'inventory.labels.crossReference') class="col-sm-8 test-inv-cross"}}
+  {{#if model.isMedicine}}
+    {{inventory/rank-select property="rank"}}
+    {{inventory/class-select property="nemClass"}}
+  {{/if}}
 </div>
 <div class="row">
   {{em-input property="reorderPoint" label=(t 'inventory.labels.reorderPoint') class="col-sm-3 test-inv-reorder"}}
