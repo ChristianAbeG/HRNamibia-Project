@@ -35,7 +35,8 @@ export default AbstractModuleRoute.extend(FulfillRequest, InventoryId, Inventory
   }],
 
   currentItem: null,
-  moduleName: 'inventory',
+  // TR: Uncomment to enable inventory
+  // moduleName: 'inventory',
 
   newButtonText: '+ new request',
   sectionTitle: 'Inventory',
