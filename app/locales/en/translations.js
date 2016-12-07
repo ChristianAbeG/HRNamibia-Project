@@ -1004,7 +1004,7 @@ export default {
   },
   revisions: {
     revisedBy: 'Revised By',
-    fieldsRevised: 'Fields Revised (old&rarr;new)',
+    revisedFields: 'Fields Revised (old&rarr;new)',
     revisedTo: 'Revised to: ',
     fieldName: 'Field Revised',
     changesMade: 'Changes Made (old&rarr;new)'
