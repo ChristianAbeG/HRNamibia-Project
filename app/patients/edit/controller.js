@@ -73,7 +73,7 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
   }.property(),
 
   patientTypes: [
-    'Charity',
+    'Public',
     'Private'
   ],
 
