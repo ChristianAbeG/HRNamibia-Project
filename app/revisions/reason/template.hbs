@@ -1,0 +1,27 @@
+{{#modal-dialog
+  title=title
+  updateButtonAction=updateButtonAction
+  updateButtonText=updateButtonText }}
+  <div class="form-vertical">
+    <table class="table form-group">
+      <tr class="table-header">
+        <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{t 'revisions.fieldName'}}</th>
+        <th class="col-xs-9 col-sm-9 col-md-9 col-lg-9">{{t 'revisions.changesMade'}}</th>
+      </tr>
+      {{#each-in changes as |attribute changes|}}
+        <tr>
+          <td>{{attribute}}</td>
+          <td>
+            {{format-if-date changes.[0]}}
+            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span><span class="sr-only">{{t 'revisions.revisedTo'}}</span>
+            {{format-if-date changes.[1]}}
+          </td>
+        </tr>
+      {{/each-in}}
+    </table>
+    <div class="form-group form-group-lg">
+      <label class="control-label">{{t 'labels.reason'}}</label>
+      {{textarea value=reason class="form-control revision-reason" rows="5" placeholder="Enter reason for record revision here." autofocus="autofocus"}}
+    </div>
+  </div>
+{{/modal-dialog}}

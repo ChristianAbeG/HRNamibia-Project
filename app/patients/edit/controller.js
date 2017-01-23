@@ -162,6 +162,7 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
     }
   }.property('model.expenses.@each.cost'),
 
+  updateButtonAction: 'showConfirmRevision',  // Request revision reason from user before updating
   updateCapability: 'add_patient',
 
   actions: {
@@ -170,12 +171,18 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
       let model = this.get('model');
       additionalContacts.addObject(newContact);
       model.set('additionalContacts', additionalContacts);
-      this.send('update', true);
+      this.send('update', true);  // TODO: CHECK AGAINST REVISION REASON CREATION!
       this.send('closeModal');
     },
     returnToPatient: function() {
       this.transitionToRoute('patients.index');
     },
+    
+    addRevisionReason: function(reason) { // Revision reason acquired, store it and perform update
+      this.get('model').set('latestRevisionReason', reason);
+      this.send('update');
+    },
+    
     /**
      * Add the specified photo to the patient's record.
      * @param {File} photoFile the photo file to add.
@@ -228,21 +235,21 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
       let contact = model.get('contactToDelete');
       let additionalContacts = this.get('model.additionalContacts');
       additionalContacts.removeObject(contact);
-      this.send('update', true);
+      this.send('update', true);  // TODO: CHECK AGAINST REVISION REASON CREATION!
     },
 
     deleteExpense: function(model) {
       let expense = model.get('expenseToDelete');
       let expenses = this.get('model.expenses');
       expenses.removeObject(expense);
-      this.send('update', true);
+      this.send('update', true);  // TODO: CHECK AGAINST REVISION REASON CREATION!
     },
 
     deleteFamily: function(model) {
       let family = model.get('familyToDelete');
       let familyInfo = this.get('model.familyInfo');
       familyInfo.removeObject(family);
-      this.send('update', true);
+      this.send('update', true);  // TODO: CHECK AGAINST REVISION REASON CREATION!
     },
 
     deletePhoto: function(model) {
@@ -361,6 +368,11 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
         }
         this.send('openModal', 'patients.notes', model);
       }
+    },
+    
+    showConfirmRevision: function() {
+      let patient = this.get('model');
+      this.send('openModal', 'revisions.reason', patient);
     },
 
     showDeleteAppointment: function(appointment) {
@@ -524,7 +536,7 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
       Ember.setProperties(updateRecord, objectToUpdate);
     }
     patient.set(name, socialRecords);
-    this.send('update', true);
+    this.send('update', true);  // TODO: CHECK AGAINST REVISION REASON CREATION!
     this.send('closeModal');
   },
 

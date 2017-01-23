@@ -111,3 +111,11 @@ $inactive-sort-indicator: rgba($navy_drk2,.3);
   from { transform: scale(1) rotate(0deg); }
   to { transform: scale(1) rotate(360deg); }
 }
+
+.revision-reason {
+  line-height: 1.5;
+}
+
+.revision-table {
+  width: 100%;
+}

@@ -361,7 +361,8 @@ export default {
     category: 'Category',
     department: 'Department',
     address: 'Address',
-    country: 'Country'
+    country: 'Country',
+    reason: 'Reason'
   },
   messages: {
     noItemsFound: 'No items found.',
@@ -791,7 +792,8 @@ export default {
       medication: 'Medication',
       imaging: 'Imaging',
       labs: 'Labs',
-      socialWork: 'Social Work'
+      socialWork: 'Social Work',
+      revisions: 'Revisions'
     },
     titles: {
       admittedPatients: 'Admitted Patients',
@@ -999,5 +1001,12 @@ export default {
     priceList: {
       charges: '{{pricingType}} charges'
     }
+  },
+  revisions: {
+    revisedBy: 'Revised By',
+    revisedFields: 'Fields Revised (old&rarr;new)',
+    revisedTo: 'Revised to: ',
+    fieldName: 'Field Revised',
+    changesMade: 'Changes Made (old&rarr;new)'
   }
 };
