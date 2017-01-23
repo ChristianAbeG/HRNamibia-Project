@@ -4,39 +4,39 @@ const { camelize } = Ember.String;
 
 export default Ember.Mixin.create({
   navItems: [
-    {
-      title: 'Inventory',
-      iconClass: 'octicon-package',
-      route: 'inventory',
-      capability: 'inventory',
-      subnav: [
-        {
-          title: 'Requests',
-          iconClass: 'octicon-chevron-right',
-          route: 'inventory.index',
-          capability: 'add_inventory_request'
-        },
-        {
-          title: 'Items',
-          iconClass: 'octicon-chevron-right',
-          route: 'inventory.listing',
-          capability: 'inventory'
-        },
-        {
-          title: 'Inventory Received',
-          iconClass: 'octicon-plus',
-          route: 'inventory.batch',
-          subroute: 'new',
-          capability: 'add_inventory_item'
-        },
-        {
-          title: 'Reports',
-          iconClass: 'octicon-chevron-right',
-          route: 'inventory.reports',
-          capability: 'inventory'
-        }
-      ]
-    },
+    // {
+    //   title: 'Inventory',
+    //   iconClass: 'octicon-package',
+    //   route: 'inventory',
+    //   capability: 'inventory',
+    //   subnav: [
+    //     {
+    //       title: 'Requests',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'inventory.index',
+    //       capability: 'add_inventory_request'
+    //     },
+    //     {
+    //       title: 'Items',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'inventory.listing',
+    //       capability: 'inventory'
+    //     },
+    //     {
+    //       title: 'Inventory Received',
+    //       iconClass: 'octicon-plus',
+    //       route: 'inventory.batch',
+    //       subroute: 'new',
+    //       capability: 'add_inventory_item'
+    //     },
+    //     {
+    //       title: 'Reports',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'inventory.reports',
+    //       capability: 'inventory'
+    //     }
+    //   ]
+    // },
     {
       title: 'Patients',
       iconClass: 'octicon-organization',
@@ -109,33 +109,33 @@ export default Ember.Mixin.create({
         }
       ]
     },
-    {
-      title: 'Imaging',
-      iconClass: 'octicon-device-camera',
-      route: 'imaging.index',
-      capability: 'imaging',
-      subnav: [
-        {
-          title: 'Requests',
-          iconClass: 'octicon-chevron-right',
-          route: 'imaging.index',
-          capability: 'imaging'
-        },
-        {
-          title: 'Completed',
-          iconClass: 'octicon-chevron-right',
-          route: 'imaging.completed',
-          capability: 'imaging'
-        },
-        {
-          title: 'New Request',
-          iconClass: 'octicon-plus',
-          route: 'imaging.edit',
-          subroute: 'new',
-          capability: 'add_imaging'
-        }
-      ]
-    },
+    // {
+    //   title: 'Imaging',
+    //   iconClass: 'octicon-device-camera',
+    //   route: 'imaging.index',
+    //   capability: 'imaging',
+    //   subnav: [
+    //     {
+    //       title: 'Requests',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'imaging.index',
+    //       capability: 'imaging'
+    //     },
+    //     {
+    //       title: 'Completed',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'imaging.completed',
+    //       capability: 'imaging'
+    //     },
+    //     {
+    //       title: 'New Request',
+    //       iconClass: 'octicon-plus',
+    //       route: 'imaging.edit',
+    //       subroute: 'new',
+    //       capability: 'add_imaging'
+    //     }
+    //   ]
+    // },
     {
       title: 'Medication',
       iconClass: 'octicon-file-text',
@@ -177,33 +177,33 @@ export default Ember.Mixin.create({
         }
       ]
     },
-    {
-      title: 'Labs',
-      iconClass: 'octicon-microscope',
-      route: 'labs.index',
-      capability: 'labs',
-      subnav: [
-        {
-          title: 'Requests',
-          iconClass: 'octicon-chevron-right',
-          route: 'labs.index',
-          capability: 'labs'
-        },
-        {
-          title: 'Completed',
-          iconClass: 'octicon-chevron-right',
-          route: 'labs.completed',
-          capability: 'labs'
-        },
-        {
-          title: 'New Request',
-          iconClass: 'octicon-plus',
-          route: 'labs.edit',
-          subroute: 'new',
-          capability: 'add_lab'
-        }
-      ]
-    },
+    // {
+    //   title: 'Labs',
+    //   iconClass: 'octicon-microscope',
+    //   route: 'labs.index',
+    //   capability: 'labs',
+    //   subnav: [
+    //     {
+    //       title: 'Requests',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'labs.index',
+    //       capability: 'labs'
+    //     },
+    //     {
+    //       title: 'Completed',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'labs.completed',
+    //       capability: 'labs'
+    //     },
+    //     {
+    //       title: 'New Request',
+    //       iconClass: 'octicon-plus',
+    //       route: 'labs.edit',
+    //       subroute: 'new',
+    //       capability: 'add_lab'
+    //     }
+    //   ]
+    // },
     {
       title: 'Billing',
       iconClass: 'octicon-credit-card',
