@@ -194,44 +194,44 @@
           </div>
         </div>
       </div>
-      <div class="panel">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-parent="#patient-accordion" href="#patient-labs">
-              {{t 'visits.labels.labs' }}
-              {{#if canAddLab}}
-                <button class="btn btn-primary align-right" {{action "newLab" bubbles=false }}>
-                  <span class="octicon octicon-plus"></span> {{t 'visits.buttons.newLab' }}
-                </button>
-              {{/if}}
-            </a>
-          </h3>
-        </div>
-        <div id="patient-labs" class="panel-collapse collapse in">
-          <div class="panel-body">
-            {{partial 'patients/labs'}}
-          </div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-parent="#patient-accordion" href="#patient-imaging">
-              {{t 'visits.labels.imaging' }}
-              {{#if canAddImaging}}
-                <button class="btn btn-primary align-right" {{action "newImaging" bubbles=false }}>
-                  <span class="octicon octicon-plus"></span> {{t 'visits.buttons.newImaging' }}
-                </button>
-              {{/if}}
-            </a>
-          </h3>
-        </div>
-        <div id="patient-imaging" class="panel-collapse collapse in">
-          <div class="panel-body">
-            {{partial 'patients/imaging'}}
-          </div>
-        </div>
-      </div>
+      {{!--<div class="panel">--}}
+      {{!--  <div class="panel-heading">--}}
+      {{!--    <h3 class="panel-title">--}}
+      {{!--      <a data-toggle="collapse" data-parent="#patient-accordion" href="#patient-labs">--}}
+      {{!--        {{t 'visits.labels.labs' }}--}}
+      {{!--        {{#if canAddLab}}--}}
+      {{!--          <button class="btn btn-primary align-right" {{action "newLab" bubbles=false }}>--}}
+      {{!--            <span class="octicon octicon-plus"></span> {{t 'visits.buttons.newLab' }}--}}
+      {{!--          </button>--}}
+      {{!--        {{/if}}--}}
+      {{!--      </a>--}}
+      {{!--    </h3>--}}
+      {{!--  </div>--}}
+      {{!--  <div id="patient-labs" class="panel-collapse collapse in">--}}
+      {{!--    <div class="panel-body">--}}
+      {{!--      {{partial 'patients/labs'}}--}}
+      {{!--    </div>--}}
+      {{!--  </div>--}}
+      {{!--</div>--}}
+      {{!--<div class="panel">--}}
+      {{!--  <div class="panel-heading">--}}
+      {{!--    <h3 class="panel-title">--}}
+      {{!--      <a data-toggle="collapse" data-parent="#patient-accordion" href="#patient-imaging">--}}
+      {{!--        {{t 'visits.labels.imaging' }}--}}
+      {{!--        {{#if canAddImaging}}--}}
+      {{!--          <button class="btn btn-primary align-right" {{action "newImaging" bubbles=false }}>--}}
+      {{!--            <span class="octicon octicon-plus"></span> {{t 'visits.buttons.newImaging' }}--}}
+      {{!--          </button>--}}
+      {{!--        {{/if}}--}}
+      {{!--      </a>--}}
+      {{!--    </h3>--}}
+      {{!--  </div>--}}
+      {{!--  <div id="patient-imaging" class="panel-collapse collapse in">--}}
+      {{!--    <div class="panel-body">--}}
+      {{!--      {{partial 'patients/imaging'}}--}}
+      {{!--    </div>--}}
+      {{!--  </div>--}}
+      {{!--</div>--}}
       <div class="panel">
         <div class="panel-heading">
           <h3 class="panel-title">

@@ -74,33 +74,33 @@ export default AbstractEditController.extend(UserRoles, UserSession, {
       'deleteMedication',
       'fulfillMedication'
     ]
-  }, {
-    name: 'labs',
-    capabilities: [
-      'labs',
-      'addLab',
-      'completeLab',
-      'deleteLab'
-    ]
-  }, {
-    name: 'imaging',
-    capabilities: [
-      'imaging',
-      'addImaging',
-      'completeImaging',
-      'deleteImaging'
-    ]
-  }, {
-    name: 'inventory',
-    capabilities: [
-      'inventory',
-      'addInventoryRequest',
-      'addInventoryItem',
-      'addInventoryPurchase',
-      'adjustInventoryLocation',
-      'deleteInventoryItem',
-      'fulfillInventory'
-    ]
+  // }, {
+  //   name: 'labs',
+  //   capabilities: [
+  //     'labs',
+  //     'addLab',
+  //     'completeLab',
+  //     'deleteLab'
+  //   ]
+  // }, {
+  //   name: 'imaging',
+  //   capabilities: [
+  //     'imaging',
+  //     'addImaging',
+  //     'completeImaging',
+  //     'deleteImaging'
+  //   ]
+  // }, {
+  //   name: 'inventory',
+  //   capabilities: [
+  //     'inventory',
+  //     'addInventoryRequest',
+  //     'addInventoryItem',
+  //     'addInventoryPurchase',
+  //     'adjustInventoryLocation',
+  //     'deleteInventoryItem',
+  //     'fulfillInventory'
+  //   ]
   }],
 
   capabilitySections: Ember.computed.map('availableCapabilities', function(section) {

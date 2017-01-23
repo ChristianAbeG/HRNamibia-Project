@@ -7,7 +7,8 @@ export default AbstractModuleRoute.extend({
     findArgs: ['lookup', 'lab_pricing_types']
   }],
   allowSearch: false,
-  moduleName: 'labs',
+  // TR: Uncomment to enable labs
+  // moduleName: 'labs',
   newButtonText: t('labs.buttons.newButton'),
   sectionTitle: t('labs.sectionTitle')
 });

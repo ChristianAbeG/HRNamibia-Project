@@ -15,13 +15,13 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
     return this.currentUserCan('add_patient');
   }.property(),
 
-  canAddImaging: function() {
-    return this.currentUserCan('add_imaging');
-  }.property(),
+  // canAddImaging: function() {
+  //   return this.currentUserCan('add_imaging');
+  // }.property(),
 
-  canAddLab: function() {
-    return this.currentUserCan('add_lab');
-  }.property(),
+  // canAddLab: function() {
+  //   return this.currentUserCan('add_lab');
+  // }.property(),
 
   canAddMedication: function() {
     return this.currentUserCan('add_medication');
@@ -48,13 +48,13 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
     return this.currentUserCan('add_patient');
   }.property(),
 
-  canDeleteImaging: function() {
-    return this.currentUserCan('delete_imaging');
-  }.property(),
+  // canDeleteImaging: function() {
+  //   return this.currentUserCan('delete_imaging');
+  // }.property(),
 
-  canDeleteLab: function() {
-    return this.currentUserCan('delete_lab');
-  }.property(),
+  // canDeleteLab: function() {
+  //   return this.currentUserCan('delete_lab');
+  // }.property(),
 
   canDeleteMedication: function() {
     return this.currentUserCan('delete_medication');
@@ -129,13 +129,13 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
     id: 'patient_status_list'
   }],
 
-  patientImaging: function() {
-    return this._getVisitCollection('imaging');
-  }.property('model.visits.[].imaging'),
+  // patientImaging: function() {
+  //   return this._getVisitCollection('imaging');
+  // }.property('model.visits.[].imaging'),
 
-  patientLabs: function() {
-    return this._getVisitCollection('labs');
-  }.property('model.visits.[].labs'),
+  // patientLabs: function() {
+  //   return this._getVisitCollection('labs');
+  // }.property('model.visits.[].labs'),
 
   patientMedications: function() {
     return this._getVisitCollection('medication');
@@ -269,27 +269,27 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
       }
     },
 
-    editImaging: function(imaging) {
-      if (this.get('canAddImaging')) {
-        if (imaging.get('canEdit')) {
-          imaging.setProperties({
-            'returnToPatient': true
-          });
-          this.transitionToRoute('imaging.edit', imaging);
-        }
-      }
-    },
+    // editImaging: function(imaging) {
+    //   if (this.get('canAddImaging')) {
+    //     if (imaging.get('canEdit')) {
+    //       imaging.setProperties({
+    //         'returnToPatient': true
+    //       });
+    //       this.transitionToRoute('imaging.edit', imaging);
+    //     }
+    //   }
+    // },
 
-    editLab: function(lab) {
-      if (this.get('canAddLab')) {
-        if (lab.get('canEdit')) {
-          lab.setProperties({
-            'returnToPatient': true
-          });
-          this.transitionToRoute('labs.edit', lab);
-        }
-      }
-    },
+    // editLab: function(lab) {
+    //   if (this.get('canAddLab')) {
+    //     if (lab.get('canEdit')) {
+    //       lab.setProperties({
+    //         'returnToPatient': true
+    //       });
+    //       this.transitionToRoute('labs.edit', lab);
+    //     }
+    //   }
+    // },
 
     editMedication: function(medication) {
       if (this.get('canAddMedication')) {
@@ -323,13 +323,13 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
       this._addChildObject('appointments.edit');
     },
 
-    newImaging: function() {
-      this._addChildObject('imaging.edit');
-    },
+    // newImaging: function() {
+    //   this._addChildObject('imaging.edit');
+    // },
 
-    newLab: function() {
-      this._addChildObject('labs.edit');
-    },
+    // newLab: function() {
+    //   this._addChildObject('labs.edit');
+    // },
 
     newMedication: function() {
       this._addChildObject('medication.edit');
@@ -402,13 +402,13 @@ export default AbstractEditController.extend(BloodTypes, ReturnTo, UserSession, 
 
     },
 
-    showDeleteImaging: function(imaging) {
-      this.send('openModal', 'imaging.delete', imaging);
-    },
+    // showDeleteImaging: function(imaging) {
+    //   this.send('openModal', 'imaging.delete', imaging);
+    // },
 
-    showDeleteLab: function(lab) {
-      this.send('openModal', 'labs.delete', lab);
-    },
+    // showDeleteLab: function(lab) {
+    //   this.send('openModal', 'labs.delete', lab);
+    // },
 
     showDeleteMedication: function(medication) {
       this.send('openModal', 'medication.delete', medication);
