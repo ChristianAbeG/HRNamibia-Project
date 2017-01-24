@@ -62,51 +62,51 @@ export default Ember.Controller.extend(BillingCategories, EKMixin,
           'inv-request': 'expenseAccount',
           pricing: 'expenseAccount'
         }
-      }, {
-        name: this.get('i18n').t('admin.lookup.aisleLocationList'),
-        value: 'aisle_location_list',
-        models: {
-          inventory: 'aisleLocation',
-          'inv-location': 'aisleLocation',
-          'inv-purchase': 'aisleLocation',
-          'inv-request': [
-            'deliveryAisle',
-            'locationsAffected' // Special use case that we need to handle
-          ]
-        }
-      }, {
-        name: this.get('i18n').t('admin.lookup.warehouseList'),
-        value: 'warehouse_list',
-        models: {
-          inventory: 'location',
-          'inv-location': 'location',
-          'inv-purchase': 'location',
-          'inv-request': [
-            'deliveryLocation',
-            'locationsAffected' // Special use case that we need to handle
-          ]
-        }
-      }, {
-        defaultValues: 'defaultInventoryTypes',
-        name: this.get('i18n').t('admin.lookup.inventoryTypes'),
-        value: 'inventory_types',
-        models: {
-          inventory: 'inventoryType'
-        }
-      }, {
-        defaultValues: 'defaultImagingPricingTypes',
-        name: this.get('i18n').t('admin.lookup.imagingPricingTypes'),
-        value: 'imaging_pricing_types',
-        models: {
-          pricing: 'pricingType'
-        }
-      }, {
-        defaultValues: 'defaultLabPricingTypes',
-        name: this.get('i18n').t('admin.lookup.labPricingTypes'),
-        value: 'lab_pricing_types',
-        models: {
-          pricing: 'pricingType'
-        }
+      // }, {
+      //   name: this.get('i18n').t('admin.lookup.aisleLocationList'),
+      //   value: 'aisle_location_list',
+      //   models: {
+      //     inventory: 'aisleLocation',
+      //     'inv-location': 'aisleLocation',
+      //     'inv-purchase': 'aisleLocation',
+      //     'inv-request': [
+      //       'deliveryAisle',
+      //       'locationsAffected' // Special use case that we need to handle
+      //     ]
+      //   }
+      // }, {
+      //   name: this.get('i18n').t('admin.lookup.warehouseList'),
+      //   value: 'warehouse_list',
+      //   models: {
+      //     inventory: 'location',
+      //     'inv-location': 'location',
+      //     'inv-purchase': 'location',
+      //     'inv-request': [
+      //       'deliveryLocation',
+      //       'locationsAffected' // Special use case that we need to handle
+      //     ]
+      //   }
+      // }, {
+      //   defaultValues: 'defaultInventoryTypes',
+      //   name: this.get('i18n').t('admin.lookup.inventoryTypes'),
+      //   value: 'inventory_types',
+      //   models: {
+      //     inventory: 'inventoryType'
+      //   }
+      // }, {
+      //   defaultValues: 'defaultImagingPricingTypes',
+      //   name: this.get('i18n').t('admin.lookup.imagingPricingTypes'),
+      //   value: 'imaging_pricing_types',
+      //   models: {
+      //     pricing: 'pricingType'
+      //   }
+      // }, {
+      //   defaultValues: 'defaultLabPricingTypes',
+      //   name: this.get('i18n').t('admin.lookup.labPricingTypes'),
+      //   value: 'lab_pricing_types',
+      //   models: {
+      //     pricing: 'pricingType'
+      //   }
       }, {
         name: this.get('i18n').t('admin.lookup.patientStatusList'),
         value: 'patient_status_list',

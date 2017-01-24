@@ -77,45 +77,45 @@ export default Ember.Mixin.create({
       'Medical Records Officer',
       'System Administrator'
     ],
-    add_lab: [
-      'Data Entry',
-      'Doctor',
-      'Hospital Administrator',
-      'Medical Records Officer',
-      'Lab Technician',
-      'System Administrator'
-    ],
-    add_imaging: [
-      'Data Entry',
-      'Doctor',
-      'Hospital Administrator',
-      'Imaging Technician',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
-    add_inventory_request: [
-      'Data Entry',
-      'Hospital Administrator',
-      'Inventory Manager',
-      'Medical Records Officer',
-      'Nurse Manager',
-      'Pharmacist',
-      'System Administrator'
-    ],
-    add_inventory_item: [
-      'Data Entry',
-      'Hospital Administrator',
-      'Inventory Manager',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
-    add_inventory_purchase: [
-      'Data Entry',
-      'Hospital Administrator',
-      'Inventory Manager',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
+    // add_lab: [
+    //   'Data Entry',
+    //   'Doctor',
+    //   'Hospital Administrator',
+    //   'Medical Records Officer',
+    //   'Lab Technician',
+    //   'System Administrator'
+    // ],
+    // add_imaging: [
+    //   'Data Entry',
+    //   'Doctor',
+    //   'Hospital Administrator',
+    //   'Imaging Technician',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
+    // add_inventory_request: [
+    //   'Data Entry',
+    //   'Hospital Administrator',
+    //   'Inventory Manager',
+    //   'Medical Records Officer',
+    //   'Nurse Manager',
+    //   'Pharmacist',
+    //   'System Administrator'
+    // ],
+    // add_inventory_item: [
+    //   'Data Entry',
+    //   'Hospital Administrator',
+    //   'Inventory Manager',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
+    // add_inventory_purchase: [
+    //   'Data Entry',
+    //   'Hospital Administrator',
+    //   'Inventory Manager',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
     add_invoice: [
       'Data Entry',
       'Hospital Administrator',
@@ -178,28 +178,28 @@ export default Ember.Mixin.create({
       'Social Worker',
       'System Administrator'
     ],
-    adjust_inventory_location: [
-      'Hospital Administrator',
-      'Inventory Manager',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
+    // adjust_inventory_location: [
+    //   'Hospital Administrator',
+    //   'Inventory Manager',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
     billing: [
       'Hospital Administrator',
       'Finance',
       'Finance Manager',
       'System Administrator'
     ],
-    complete_imaging: [
-      'Imaging Technician',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
-    complete_lab: [
-      'Lab Technician',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
+    // complete_imaging: [
+    //   'Imaging Technician',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
+    // complete_lab: [
+    //   'Lab Technician',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
     delete_appointment: [
       'Hospital Administrator',
       'Medical Records Officer',
@@ -214,28 +214,28 @@ export default Ember.Mixin.create({
       'Patient Administration',
       'System Administrator'
     ],
-    delete_inventory_item: [
-      'Hospital Administrator',
-      'Inventory Manager',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
-    delete_imaging: [
-      'Doctor',
-      'Hospital Administrator',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
+    // delete_inventory_item: [
+    //   'Hospital Administrator',
+    //   'Inventory Manager',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
+    // delete_imaging: [
+    //   'Doctor',
+    //   'Hospital Administrator',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
     delete_invoice: [
       'Hospital Administrator',
       'System Administrator'
     ],
-    delete_lab: [
-      'Doctor',
-      'Hospital Administrator',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
+    // delete_lab: [
+    //   'Doctor',
+    //   'Hospital Administrator',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
     delete_medication: [
       'Doctor',
       'Hospital Administrator',
@@ -324,40 +324,40 @@ export default Ember.Mixin.create({
       'Medical Records Officer',
       'System Administrator'
     ],
-    fulfill_inventory: [
-      'Hospital Administrator',
-      'Inventory Manager',
-      'Medical Records Officer',
-      'Pharmacist',
-      'System Administrator'
-    ],
+    // fulfill_inventory: [
+    //   'Hospital Administrator',
+    //   'Inventory Manager',
+    //   'Medical Records Officer',
+    //   'Pharmacist',
+    //   'System Administrator'
+    // ],
     fulfill_medication: [
       'Medical Records Officer',
       'Pharmacist',
       'System Administrator'
     ],
-    imaging: [
-      'Data Entry',
-      'Doctor',
-      'Hospital Administrator',
-      'Imaging Technician',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
+    // imaging: [
+    //   'Data Entry',
+    //   'Doctor',
+    //   'Hospital Administrator',
+    //   'Imaging Technician',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
     invoices: [
       'Hospital Administrator',
       'Finance',
       'Finance Manager',
       'System Administrator'
     ],
-    labs: [
-      'Data Entry',
-      'Doctor',
-      'Hospital Administrator',
-      'Lab Technician',
-      'Medical Records Officer',
-      'System Administrator'
-    ],
+    // labs: [
+    //   'Data Entry',
+    //   'Doctor',
+    //   'Hospital Administrator',
+    //   'Lab Technician',
+    //   'Medical Records Officer',
+    //   'System Administrator'
+    // ],
     medication: [
       'Data Entry',
       'Doctor',
@@ -366,15 +366,15 @@ export default Ember.Mixin.create({
       'Pharmacist',
       'System Administrator'
     ],
-    inventory: [
-      'Data Entry',
-      'Hospital Administrator',
-      'Inventory Manager',
-      'Medical Records Officer',
-      'Nurse Manager',
-      'Pharmacist',
-      'System Administrator'
-    ],
+    // inventory: [
+    //   'Data Entry',
+    //   'Hospital Administrator',
+    //   'Inventory Manager',
+    //   'Medical Records Officer',
+    //   'Nurse Manager',
+    //   'Pharmacist',
+    //   'System Administrator'
+    // ],
     load_db: [
       'System Administrator'
     ],
