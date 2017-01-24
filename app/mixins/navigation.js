@@ -204,39 +204,39 @@ export default Ember.Mixin.create({
     //     }
     //   ]
     // },
-    {
-      title: 'Billing',
-      iconClass: 'octicon-credit-card',
-      route: 'invoices.index',
-      capability: 'invoices',
-      subnav: [
-        {
-          title: 'Invoices',
-          iconClass: 'octicon-chevron-right',
-          route: 'invoices.index',
-          capability: 'invoices'
-        },
-        {
-          title: 'New Invoice',
-          iconClass: 'octicon-plus',
-          route: 'invoices.edit',
-          subroute: 'new',
-          capability: 'invoices'
-        },
-        {
-          title: 'Prices',
-          iconClass: 'octicon-chevron-right',
-          route: 'pricing.index',
-          capability: 'invoices'
-        },
-        {
-          title: 'Price Profiles',
-          iconClass: 'octicon-chevron-right',
-          route: 'pricing.profiles',
-          capability: 'invoices'
-        }
-      ]
-    },
+    // {
+    //   title: 'Billing',
+    //   iconClass: 'octicon-credit-card',
+    //   route: 'invoices.index',
+    //   capability: 'invoices',
+    //   subnav: [
+    //     {
+    //       title: 'Invoices',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'invoices.index',
+    //       capability: 'invoices'
+    //     },
+    //     {
+    //       title: 'New Invoice',
+    //       iconClass: 'octicon-plus',
+    //       route: 'invoices.edit',
+    //       subroute: 'new',
+    //       capability: 'invoices'
+    //     },
+    //     {
+    //       title: 'Prices',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'pricing.index',
+    //       capability: 'invoices'
+    //     },
+    //     {
+    //       title: 'Price Profiles',
+    //       iconClass: 'octicon-chevron-right',
+    //       route: 'pricing.profiles',
+    //       capability: 'invoices'
+    //     }
+    //   ]
+    // },
     {
       title: 'Administration',
       iconClass: 'octicon-person',

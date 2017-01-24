@@ -184,12 +184,12 @@ export default Ember.Mixin.create({
     //   'Medical Records Officer',
     //   'System Administrator'
     // ],
-    billing: [
-      'Hospital Administrator',
-      'Finance',
-      'Finance Manager',
-      'System Administrator'
-    ],
+    // billing: [
+    //   'Hospital Administrator',
+    //   'Finance',
+    //   'Finance Manager',
+    //   'System Administrator'
+    // ],
     // complete_imaging: [
     //   'Imaging Technician',
     //   'Medical Records Officer',

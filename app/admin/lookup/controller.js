@@ -24,13 +24,13 @@ export default Ember.Controller.extend(BillingCategories, EKMixin,
         model: {
           procedure: 'anesthesiologist'
         }
-      }, {
-        defaultValues: 'defaultBillingCategories',
-        name: this.get('i18n').t('admin.lookup.billingCategories'),
-        value: 'billing_categories',
-        models: {
-          'billing-line-item': 'category'
-        }
+      // }, {
+      //   defaultValues: 'defaultBillingCategories',
+      //   name: this.get('i18n').t('admin.lookup.billingCategories'),
+      //   value: 'billing_categories',
+      //   models: {
+      //     'billing-line-item': 'category'
+      //   }
       }, {
         name: this.get('i18n').t('admin.lookup.clinicList'),
         value: 'clinic_list',

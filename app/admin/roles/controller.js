@@ -26,23 +26,23 @@ export default AbstractEditController.extend(UserRoles, UserSession, {
       'appointments',
       'addAppointment'
     ]
-  }, {
-    name: 'billing',
-    capabilities: [
-      'billing',
-      'addCharge',
-      'addPricing',
-      'addPricingProfile',
-      'addInvoice',
-      'addPayment',
-      'deleteInvoice',
-      'deletePricing',
-      'deletePricingProfile',
-      'editInvoice',
-      'invoices',
-      'overrideInvoice',
-      'pricing'
-    ]
+  // }, {
+  //   name: 'billing',
+  //   capabilities: [
+  //     'billing',
+  //     'addCharge',
+  //     'addPricing',
+  //     'addPricingProfile',
+  //     'addInvoice',
+  //     'addPayment',
+  //     'deleteInvoice',
+  //     'deletePricing',
+  //     'deletePricingProfile',
+  //     'editInvoice',
+  //     'invoices',
+  //     'overrideInvoice',
+  //     'pricing'
+  //   ]
   }, {
     name: 'patients',
     capabilities: [
