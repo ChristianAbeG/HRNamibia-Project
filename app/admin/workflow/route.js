@@ -14,8 +14,8 @@ export default AbstractEditRoute.extend({
           admissionDeposit: false,
           clinicPrepayment: false,
           followupPrepayment: false,
-          outpatientLabPrepayment: false,
-          outpatientImagingPrepayment: false,
+          // outpatientLabPrepayment: false,
+          // outpatientImagingPrepayment: false,
           outpatientMedicationPrepayment: false
         }
       }));
