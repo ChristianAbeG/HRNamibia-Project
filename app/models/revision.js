@@ -11,7 +11,7 @@ export default Model.extend(UserSession, EmberValidations, {
   revisedFields: DS.attr(),
   reason: DS.attr('string'),
 
-  save: function(options) {
+  save(options) {
     let changedAttributes = this.changedAttributes();
     let session = this.get('session');
 
@@ -29,7 +29,7 @@ export default Model.extend(UserSession, EmberValidations, {
           // Conflict encountered, so rollback, reload and then save the record with the changed attributes.
           this.rollbackAttributes();
           return this.reload().then(function(record) {
-            for (var attribute in changedAttributes) {
+            for (let attribute in changedAttributes) {
               record.set(attribute, changedAttributes[attribute][1]);
             }
             if (Ember.isEmpty(options)) {

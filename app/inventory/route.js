@@ -42,33 +42,33 @@ export default AbstractModuleRoute.extend(FulfillRequest, InventoryId, Inventory
   sectionTitle: 'Inventory',
 
   actions: {
-    addPurchase: function(newPurchase) {
+    addPurchase(newPurchase) {
       let currentItem = this.get('currentItem');
       let purchases = currentItem.get('purchases');
       purchases.addObject(newPurchase);
-      this.newPurchaseAdded(currentItem, newPurchase).then(function() {
+      this.newPurchaseAdded(currentItem, newPurchase).then(() => {
         currentItem.updateQuantity();
-        currentItem.save().then(function() {
+        currentItem.save().then(() => {
           this.send('closeModal');
-        }.bind(this));
-      }.bind(this));
+        });
+      });
     },
 
-    newInventoryBatch: function() {
+    newInventoryBatch() {
       if (this.currentUserCan(this.get('addCapability'))) {
         this.transitionTo('inventory.batch', 'new');
       }
     },
 
-    newRequest: function() {
+    newRequest() {
       this.transitionTo('inventory.request', 'new');
     },
 
-    allItems: function() {
+    allItems() {
       this.transitionTo('inventory.listing');
     },
 
-    showAddPurchase: function(inventoryItem) {
+    showAddPurchase(inventoryItem) {
       let newPurchase = this.get('store').createRecord('inv-purchase', {
         dateReceived: new Date(),
         distributionUnit: inventoryItem.get('distributionUnit'),

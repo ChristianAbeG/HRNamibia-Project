@@ -1,10 +1,11 @@
 import Ember from 'ember';
 export default Ember.Helper.helper(function(params, hash) {
   if (!Ember.isEmpty(params[0])) {
-    let input = params[0],
-        isDate = moment.isDate(input),
-        isDateString = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/.test(input),
-        offsetMidnight = (new Date()).getTimezoneOffset() / 60; // Divide by 60 because getTimezoneOffset() gives in minutes
+    let [input] = params;
+    let isDate = moment.isDate(input);
+    let isDateString = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/.test(input);
+    let offsetMidnight = (new Date()).getTimezoneOffset() / 60; // Divide by 60 because getTimezoneOffset() gives in minutes
+
     if (offsetMidnight < 0) {
       offsetMidnight += 24;
     }
@@ -20,7 +21,7 @@ export default Ember.Helper.helper(function(params, hash) {
         midnightPattern += ':00:00.000Z$';
 
         let midnight = new RegExp(midnightPattern);
-        console.log('format-if-date: offsetMidnight=' + offsetMidnight + ', midnightPattern=' + midnightPattern + ', regex=' + midnight);
+        // console.log('format-if-date: offsetMidnight=' + offsetMidnight + ', midnightPattern=' + midnightPattern + ', regex=' + midnight);
         dateFormat = (midnight.test(input)) ? 'l' : 'l LT';
       }
 
