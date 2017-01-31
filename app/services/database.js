@@ -1,7 +1,12 @@
 import Ember from 'ember';
 import createPouchViews from 'hospitalrun/utils/pouch-views';
 import List from 'npm:pouchdb-list';
+import PouchAdapterMemory from 'npm:pouchdb-adapter-memory';
 import PouchAdapterUtils from 'hospitalrun/mixins/pouch-adapter-utils';
+
+const {
+  isEmpty
+} = Ember;
 
 export default Ember.Service.extend(PouchAdapterUtils, {
   config: Ember.inject.service(),
@@ -26,10 +31,10 @@ export default Ember.Service.extend(PouchAdapterUtils, {
           timeout: 30000
         };
         // If we don't have the proper credentials, throw error to force login.
-        if (Ember.isEmpty(configs.config_consumer_key) ||
-          Ember.isEmpty(configs.config_consumer_secret) ||
-          Ember.isEmpty(configs.config_oauth_token) ||
-          Ember.isEmpty(configs.config_token_secret)) {
+        if (Ember.isEmpty(configs.config_consumer_key)
+          || Ember.isEmpty(configs.config_consumer_secret)
+          || Ember.isEmpty(configs.config_oauth_token)
+          || Ember.isEmpty(configs.config_token_secret)) {
           throw Error('login required');
         } else {
           let headers = {
@@ -107,6 +112,24 @@ export default Ember.Service.extend(PouchAdapterUtils, {
     });
   },
 
+ /**
+  * Given an record type, return back the maximum pouchdb id.  Useful for endkeys.
+  * @param {String} type the record type.
+  * @returns {String} the max pouch id for the type.
+  */
+  getMaxPouchId(type) {
+    return this.getPouchId({}, type);
+  },
+
+  /**
+  * Given an record type, return back the minimum pouchdb id.  Useful for startkeys.
+  * @param {String} type the record type.
+  * @returns {String} the min pouch id for the type.
+  */
+  getMinPouchId(type) {
+    return this.getPouchId(null, type);
+  },
+
   /**
   * Given an Ember record id and type, return back the corresponding pouchDB id.
   * @param {String} emberId the ember record id.
@@ -114,10 +137,13 @@ export default Ember.Service.extend(PouchAdapterUtils, {
   * @returns {String} the corresponding pouch id.
   */
   getPouchId(emberId, type) {
-    return this.get('mainDB').rel.makeDocID({
-      id: emberId,
-      type: type
-    });
+    let idInfo = {
+      type
+    };
+    if (!isEmpty(emberId)) {
+      idInfo.id = emberId;
+    }
+    return this.get('mainDB').rel.makeDocID(idInfo);
   },
 
   /**
@@ -125,8 +151,9 @@ export default Ember.Service.extend(PouchAdapterUtils, {
    * @param {String} dbDump A couchdb dump string produced by pouchdb-dump-cli.
    * @returns {Promise} A promise that resolves once the dump has been loaded.
    */
-  loadDBFromDump: function(dbDump) {
+  loadDBFromDump(dbDump) {
     return new Ember.RSVP.Promise((resolve, reject) => {
+      PouchDB.plugin(PouchAdapterMemory);
       let db = new PouchDB('dbdump', {
         adapter: 'memory'
       });

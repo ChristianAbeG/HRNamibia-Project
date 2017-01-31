@@ -17,12 +17,12 @@ export default Model.extend(UserSession, EmberValidations, {  // Like models/abs
   * Also, if the save failed because of a conflict, reload the record and reapply the changed attributes and
   * attempt to save again.
   */
-  save: function(options) {
+  save(options) {
     let changedAttributes = this.changedAttributes();
     let modifiedDate = new Date();
     let modifiedFields = this.get('modifiedFields');
     let session = this.get('session');
-    
+
     if (!session || !session.get('isAuthenticated')) {
       return new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.run(null, reject, 'ERROR you must be logged in to save');
@@ -60,9 +60,7 @@ export default Model.extend(UserSession, EmberValidations, {  // Like models/abs
         revisedBy: this.get('modifiedBy'),
         revisedFields: changedAttributes,
         reason: this.get('latestRevisionReason')
-      }).save().then((response) => {
-        console.log('Revision saved. id: ' + response);
-      });
+      }).save();
     }
     return this._super(options).catch(function(error) {
       if (!Ember.isEmpty(options) && options.retry) {
@@ -72,7 +70,7 @@ export default Model.extend(UserSession, EmberValidations, {  // Like models/abs
           // Conflict encountered, so rollback, reload and then save the record with the changed attributes.
           this.rollbackAttributes();
           return this.reload().then(function(record) {
-            for (var attribute in changedAttributes) {
+            for (let attribute in changedAttributes) {
               record.set(attribute, changedAttributes[attribute][1]);
             }
             if (Ember.isEmpty(options)) {

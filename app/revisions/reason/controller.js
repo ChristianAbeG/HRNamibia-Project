@@ -8,9 +8,8 @@ export default Ember.Controller.extend({  // TODO: MODEL NEVER GETS UPDATED IN T
 
   reason: '',
   changes: function() {
-    let changedAttributes = this.get('model').changedAttributes(),
-        attribute;
-    for (attribute in changedAttributes) {
+    let changedAttributes = this.get('model').changedAttributes();
+    for (let attribute in changedAttributes) {
       if (!changedAttributes[attribute][0] && !changedAttributes[attribute][1]) {
         delete changedAttributes[attribute];
       }
@@ -19,14 +18,14 @@ export default Ember.Controller.extend({  // TODO: MODEL NEVER GETS UPDATED IN T
   }.property('model.hasDirtyAttributes'),
 
   actions: {
-    cancel: function() {
+    cancel() {
       this.set('reason', '');
       this.send('closeModal');
     },
 
-    confirm: function() {
-      let reasonGiven = this.get('reason'),
-          editController = this.get('patientsEdit');
+    confirm() {
+      let reasonGiven = this.get('reason');
+      let editController = this.get('patientsEdit');
 
       editController.send('addRevisionReason', reasonGiven);
       this.set('reason', '');

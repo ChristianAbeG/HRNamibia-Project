@@ -1,7 +1,16 @@
 {{#edit-panel editPanelProps=editPanelProps}}
   {{#em-form model=model submitButton=false bubbles=false }}
     {{#unless isNewOrDeleted}}
-      {{patient-summary patient=model visits=model.visits patientProcedures=patientProcedures disablePatientLink=true store=store }}
+      {{patient-summary
+        patient=model
+        patientProcedures=patientProcedures
+        disablePatientLink=true
+        store=store
+        allowAddAllergy=true
+        allowAddDiagnosis=true
+        allowAddOperativePlan=true
+        diagnosisList=diagnosisList
+      }}
       <ul class="nav nav-pills tab-nav" role="tablist">
         <li role="presentation" class="active"><a href="#history" role="tab" data-toggle="pill" data-test-selector="history-tab">{{t 'patients.navigation.history'}}</a></li>
         <li role="presentation"><a href="#general" role="tab" data-toggle="pill" data-test-selector="general-tab">{{t 'patients.navigation.general'}}</a></li>
@@ -14,7 +23,7 @@
         {{#if canAddSocialWork}}
           <li role="presentation"><a href="#social" role="tab" data-toggle="pill" data-test-selector="social-tab">{{t 'patients.navigation.socialWork'}}</a></li>
         {{/if}}
-        <li role="presentation"><a href="#revisions" role="tab" data-toggle="pill" data-test-selector="revisions-tab">{{t 'patients.navigation.revisions'}}</a></li>
+                <li role="presentation"><a href="#revisions" role="tab" data-toggle="pill" data-test-selector="revisions-tab">{{t 'patients.navigation.revisions'}}</a></li>
       </ul>
     {{/unless}}
     <div class="tab-content">
@@ -36,86 +45,50 @@
                       <span class="ph-visit-date">{{visit.visitDate}}</span>
                       <span class="ph-visit-type">{{visit.visitType}}</span>
                     </div>
-
-                    {{#if visit.history}}
-                      <div class="ph-note-item">
-                        <h5 class="ph-note-heading">{{t 'patients.headings.history'}}</h5>
-                        {{html-line-break visit.history}}
-                      </div>
-                    {{/if}}
-
-                    {{#if visit.historySince}}
-                      <div class="ph-note-item">
-                        <h5 class="ph-note-heading">{{t "patients.headings.historySince"}}</h5>
-                        {{html-line-break visit.historySince}}
-                      </div>
-                    {{/if}}
-
                     {{#if visit.procedures}}
                       <div class="ph-note-item">
                         <h5 class="ph-note-heading">{{t 'labels.procedures' }}</h5>
                         {{#each visit.procedures as |procedure|}}
-                          <div {{action 'editProcedure' procedure }}>
+                          <div {{action 'editProcedure' procedure }} class="clickable">
                             <h5 class="ph-note-heading">
                               {{date-format procedure.procedureDate}}:
-                              {{#if procedure.cptCode}}
-                                [{{t 'labels.cptcode' }} - {{procedure.cptCode}}]
-                              {{/if}}
                               {{procedure.description}}
                             </h5>
-                            <h6>
-                              {{t 'labels.physician'}}: {{procedure.physician}}
-                              {{#if procedure.assistant}}
-                                , {{t 'labels.assisting'}}: {{procedure.assistant}}
-                              {{/if}}
-                              {{#if procedure.anesthesiologist}}
-                                , {{t 'labels.anesthesia'}}: {{procedure.anesthesiologist}}
-                              {{/if}}
-                            </h6>
-                            {{html-line-break procedure.notes}}
                           </div>
                         {{/each}}
                       </div>
                     {{/if}}
-                    {{!--{{#if visit.imaging}}--}}
+                    {{!--{{#if visit.hasCompletedImaging}}--}}
                     {{!--  <div class="ph-note-item">--}}
-                    {{!--    <h5 class="ph-note-heading">{{t 'labels.imageOrders' }}</h5>--}}
-                    {{!--    {{#each visit.imaging as |imaging|}}--}}
-                    {{!--      <div {{action 'editImaging' imaging }}>--}}
-                    {{!--        <h5 class="ph-note-heading">{{date-format imaging.imagingDate}}: {{imaging.imagingType.name}}</h5>--}}
-                    {{!--        <div>{{imaging.result}}</div>--}}
-                    {{!--        <div>{{html-line-break imaging.notes}}</div>--}}
-                    {{!--      </div>--}}
-                    {{!--    {{/each}}--}}
-                    {{!--  </div>--}}
+                        {{!--<h5 class="ph-note-heading">{{t 'labels.imageOrders' }}</h5>--}}
+                        {{!--{{#each visit.imaging as |imaging|}}--}}
+                          {{!--{{#if (eq imaging.status 'Completed')}}--}}
+                            {{!--<h5 class="ph-note-heading">{{date-format imaging.imagingDate}}: {{imaging.imagingType.name}}</h5>--}}
+                          {{!--{{/if}}--}}
+                        {{!--{{/each}}--}}
+                      {{!--</div>--}}
                     {{!--{{/if}}--}}
-                    {{!--{{#if visit.labs}}--}}
-                    {{!--  <div class="ph-note-item">--}}
-                    {{!--    <h5 class="ph-note-heading">{{t 'labels.labOrders' }}</h5>--}}
-                    {{!--    {{#each visit.labs as |lab|}}--}}
-                    {{!--      <div {{action 'editLab' lab }}>--}}
-                    {{!--        <h5 class="ph-note-heading">{{date-format lab.labDate}}: {{lab.labType.name}}</h5>--}}
-                    {{!--        <div>{{lab.result}}</div>--}}
-                    {{!--        <div>{{html-line-break lab.notes}}</div>--}}
-                    {{!--      </div>--}}
-                    {{!--    {{/each}}--}}
-                    {{!--  </div>--}}
+                    {{!--{{#if visit.hasCompletedLabs}}--}}
+                      {{!--<div class="ph-note-item">--}}
+                        {{!--<h5 class="ph-note-heading">{{t 'labels.labOrders' }}</h5>--}}
+                        {{!--{{#each visit.labs as |lab|}}--}}
+                          {{!--{{#if (eq lab.status 'Completed')}}--}}
+                            {{!--<h5 class="ph-note-heading">{{date-format lab.labDate}}: {{lab.labType.name}}</h5>--}}
+                          {{!--{{/if}}--}}
+                        {{!--{{/each}}--}}
+                      {{!--</div>--}}
                     {{!--{{/if}}--}}
-                    {{#if visit.patientNotes}}
+                    {{#if visit.hasCompletedMedication}}
                       <div class="ph-note-item">
-                        <h5 class="ph-note-heading">{{t 'labels.notes'}}</h5>
-                        {{#each visit.patientNotes as |note|}}
-                          <div {{action 'showAddPatientNote' note }}>
-                            <h5 class="ph-note-heading">{{note.authoredBy}}</h5>
-                            {{date-format note.date}}[{{note.noteType}}]: {{html-line-break note.content}}
-                          </div>
+                        <h5 class="ph-note-heading">{{t 'labels.medication' }}</h5>
+                        {{#each visit.medication as |medication|}}
+                          {{#if (eq medication.status 'Fulfilled')}}
+                            <h5 class="ph-note-heading">{{date-format medication.prescriptionDate}}: {{medication.medicationName}}</h5>
+                          {{/if}}
                         {{/each}}
                       </div>
-                    {{else}}
-                      <div class="ph-note-item">
-                        {{t 'messages.noNotesAvailable'}}
-                      </div>
                     {{/if}}
+
                   </div>
                 {{/each}}
               {{else}}
@@ -211,9 +184,9 @@
             <table class="table">
               <tr class="table-header">
                 <th>{{t 'labels.name'}}</th>
-                <th>{{t 'labels.phone'}}</th>
+                <th>{{t 'patients.labels.phone'}}</th>
                 <th>{{t 'labels.email'}}</th>
-                <th>{{t 'labels.relationship'}}</th>
+                <th>{{t 'patients.labels.relationship'}}</th>
                 {{#if canDeleteContact}}
                   <th>{{t 'labels.action'}}</th>
                 {{/if}}
@@ -236,6 +209,7 @@
             </table>
           {{/if}}
         </div>
+        {{custom-form-manager model=model formType="patient"}}
       </div>
       {{#unless isNewOrDeleted}}
         <div role="tabpanel" class="tab-pane" id="photos">
@@ -339,7 +313,7 @@
                   <tr {{action "editVisit" visit}}>
                     <td>{{date-format visit.startDate}}</td>
                     <td>{{date-format visit.endDate}}</td>
-                    <td>{{visit.primaryDiagnosis}}</td>
+                    <td>{{visit.primaryDiagnoses}}</td>
                     <td>{{visit.examiner}}</td>
                     <td>{{visit.location}}</td>
                     <td>{{visit.visitType}}</td>
@@ -372,32 +346,32 @@
           </div>
         </div>
         {{!--<div role="tabpanel" class="tab-pane" id="imaging">--}}
-        {{!--  <div class="panel">--}}
-        {{!--    {{#if canAddImaging}}--}}
-        {{!--      <div class="panel-heading">--}}
-        {{!--        <button type="button" class="btn btn-primary align-right" {{action "newImaging" bubbles=false }}>--}}
-        {{!--          <span class="octicon octicon-plus"></span> {{t 'patients.buttons.newImaging'}}--}}
-        {{!--        </button>--}}
-        {{!--      </div>--}}
-        {{!--    {{/if}}--}}
-        {{!--    <div class="panel-body detail-section-content">--}}
-        {{!--      {{partial 'patients/imaging'}}--}}
-        {{!--    </div>--}}
-        {{!--  </div>--}}
+          {{!--<div class="panel">--}}
+            {{!--{{#if canAddImaging}}--}}
+              {{!--<div class="panel-heading">--}}
+                {{!--<button type="button" class="btn btn-primary align-right" {{action "newImaging" bubbles=false }}>--}}
+                  {{!--<span class="octicon octicon-plus"></span> {{t 'patients.buttons.newImaging'}}--}}
+                {{!--</button>--}}
+              {{!--</div>--}}
+            {{!--{{/if}}--}}
+            {{!--<div class="panel-body detail-section-content">--}}
+              {{!--{{partial 'patients/imaging'}}--}}
+            {{!--</div>--}}
+          {{!--</div>--}}
         {{!--</div>--}}
         {{!--<div role="tabpanel" class="tab-pane" id="labs">--}}
-        {{!--  <div class="panel">--}}
-        {{!--    {{#if canAddLab}}--}}
-        {{!--      <div class="panel-heading">--}}
-        {{!--        <button type="button" class="btn btn-primary align-right" {{action "newLab" bubbles=false }}>--}}
-        {{!--          <span class="octicon octicon-plus"></span> {{t 'patients.buttons.newLab'}}--}}
-        {{!--        </button>--}}
-        {{!--      </div>--}}
-        {{!--    {{/if}}--}}
-        {{!--    <div class="panel-body detail-section-content">--}}
-        {{!--      {{partial 'patients/labs'}}--}}
-        {{!--    </div>--}}
-        {{!--  </div>--}}
+          {{!--<div class="panel">--}}
+            {{!--{{#if canAddLab}}--}}
+              {{!--<div class="panel-heading">--}}
+                {{!--<button type="button" class="btn btn-primary align-right" {{action "newLab" bubbles=false }}>--}}
+                  {{!--<span class="octicon octicon-plus"></span> {{t 'patients.buttons.newLab'}}--}}
+                {{!--</button>--}}
+              {{!--</div>--}}
+            {{!--{{/if}}--}}
+            {{!--<div class="panel-body detail-section-content">--}}
+              {{!--{{partial 'patients/labs'}}--}}
+            {{!--</div>--}}
+          {{!--</div>--}}
         {{!--</div>--}}
         {{#if canAddSocialWork}}
           <div role="tabpanel" class="tab-pane" id="social">
@@ -478,7 +452,7 @@
                     </tr>
                   {{/if}}
                 </table>
-                {{custom-form model=model form=customSocialForm}}
+                {{custom-form-manager model=model formType="socialwork"}}
               </div>
             </div>
           </div>

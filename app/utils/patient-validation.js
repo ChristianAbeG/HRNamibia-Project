@@ -3,7 +3,7 @@ export default {
   patientTypeAhead: {
     acceptance: {
       accept: true,
-      if: function(object) {
+      if(object) {
         if (!object.get('selectPatient')) {
           return false;
         }
@@ -16,8 +16,8 @@ export default {
           // force validation to fail
           return true;
         } else {
-          let typeAheadName = patientTypeAhead.substr(0, patientName.length);
-          if (patientName !== typeAheadName) {
+          let typeAheadName = patientTypeAhead.substr(0, patientName.length).toLowerCase();
+          if (patientName.toLowerCase().indexOf(typeAheadName) !== 0) {
             return true;
           }
         }
